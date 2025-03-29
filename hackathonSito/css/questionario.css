@@ -1,0 +1,237 @@
+/* Impostazioni generali per l'intera pagina */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5; /* Colore di sfondo chiaro per contrastare con gli altri elementi */
+}
+
+header {
+    padding: 30px;
+    background-color: #124559;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+header img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenitore principale per il questionario e il grafico */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.questionario {
+    width: 65%;
+}
+
+/* Contenitore delle domande */
+#domandaContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Contenitore delle risposte */
+#rispostaContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Stile per i pulsanti delle risposte */
+button.risposta-btn {
+    font-family: 'Poppins', sans-serif;
+    background-color: #598392; /* Grigio scuro */
+    color: white;
+    border-radius: 25px; /* Bordi più arrotondati */
+    border: none;
+    cursor: pointer;
+    padding: 12px 25px; /* Aumento leggero del padding per un aspetto più generoso */
+    margin: 12px 0; /* Aggiunta di margine verticale tra i pulsanti */
+    width: 250px; /* Aumentata la larghezza per un aspetto più equilibrato */
+    transition: all 0.3s ease; /* Transizione per effetto hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombra più morbida per un effetto più delicato */
+    font-size: 18px; /* Font di dimensioni più grandi per una maggiore leggibilità */
+    text-align: center;
+    display: inline-block;
+}
+
+button.risposta-btn:hover {
+    background-color: #01161E; /* Colore scuro al passaggio del mouse */
+    transform: translateY(-4px); /* Effetto di spinta verso l'alto più morbido */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più forte al passaggio del mouse */
+}
+
+button.risposta-btn:active {
+    transform: translateY(2px); /* Effetto di "pressione" quando il bottone è premuto */
+}
+
+/* Stile per la visualizzazione del risultato */
+#risultatoContainer {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    text-align: center;
+}
+
+#risultatoContainer pre {
+    font-size: 14px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Pulsante per vedere il risultato */
+#fineButton {
+    font-family: 'Poppins', sans-serif;
+    background-color: #598392;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 30px auto;
+}
+
+#fineButton:hover {
+    background-color: #01161E;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#fineButton:active {
+    transform: translateY(2px);
+}
+
+/* Stile per la barra di navigazione */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #01161E;
+    display: flex;
+}
+
+nav {
+    margin: 0;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+nav li a:hover {
+    background-color: #022533;
+}
+
+/* Stile per il contenitore del grafico a destra */
+.grafico {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Adattamento per dispositivi mobili */
+@media (max-width: 768px) {
+    /* Modifiche per il contenitore delle domande */
+    #domandaContainer {
+        font-size: 20px;
+        margin: 15px;
+    }
+
+    /* Modifiche per il contenitore delle risposte */
+    #rispostaContainer {
+        margin-top: 10px;
+    }
+
+    /* Modifiche per i pulsanti */
+    button.risposta-btn {
+        width: 100%;
+        padding: 15px;
+        margin: 5px;
+    }
+
+    /* Modifiche per il footer */
+    footer {
+        padding: 20px 0;
+    }
+
+    /* Modifiche per la disposizione del grafico e delle domande su dispositivi piccoli */
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grafico {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
+
+/* Stile per la parte di visualizzazione delle risposte */
+.divZ {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    height: auto;
+    width: 200px;
+    position: relative;
+    display: flex;
+}

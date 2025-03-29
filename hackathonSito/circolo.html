@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Circolo</title>
+    <link rel="stylesheet" type="text/css" href="css/circolo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script defer src="js/circolo.js"></script>
+</head>
+
+<body onload="visNoCircolo()">
+    <header>
+        <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li class="login"><a href="login.html">Accedi</a></li>
+            <li class="login"><a href="signup.html">Registrati</a></li>
+            <li class="logout" style="display:none"><a href="#" id="logoutButton">Logout</a></li>
+            <li class="dashboard"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        window.onload = function () {
+            // Controlla se l'utente è loggato nel sessionStorage
+            let logged = sessionStorage.getItem('logged');
+
+            // Ottieni gli elementi dei pulsanti di login, registrazione e logout
+            let loginButton = document.querySelector('.login'); // Tutti i pulsanti di login
+            let logoutButton = document.querySelector('.logout'); // Pulsante di logout
+
+            if (logged === 'true') {
+                // Se l'utente è loggato, nascondi i pulsanti di login e registrazione
+                let loginElements = document.querySelectorAll('.login');
+                loginElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+
+                // Mostra il pulsante di logout
+                logoutButton.style.display = 'block';
+
+                // Aggiungi un evento per il logout
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    sessionStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
+                    window.location.href = 'login.html'; // Reindirizza alla pagina di login dopo il logout
+                });
+            } else {
+                // Se l'utente non è loggato, nascondi il pulsante di logout e mostra i pulsanti di login
+                logoutButton.style.display = 'none';
+
+                // Mostra i pulsanti di login e registrazione
+                loginElements.forEach(element => {
+                    element.style.display = 'inline-block';
+                });
+            }
+        };
+    </script>
+
+    <section>
+        <div id="NoCircolo">
+            <h2>Non fai parte di nessun circolo</h2>
+            <button onclick="visCreaCircolo()">Crea un nuovo circolo</button>
+            <button onclick="visUniscitiCircolo()">Unisciti ad un circolo</button>
+            <a href="dashboard.html">Torna indietro</a>
+        </div>
+
+        <div id="creaCircolo">
+            <h2>Crea un nuovo circolo</h2>
+            <form id="variableForm">
+                <label for="circoloNome">Nome del circolo:</label>
+                <input type="text" id="circoloNome" name="circoloNome" required>
+                <p>Codice del circolo:</p>
+                <p id="ris"></p>
+                <button type="submit">Genera Codice</button>
+                <a href="#" onclick="visNoCircolo()">Torna indietro</a>
+            </form>
+        </div>
+
+        <div id="uniscitiCircolo">
+            <h2>Unisciti ad un circolo</h2>
+            <label for="circoloCodice">Codice del circolo:</label>
+            <input type="text" id="circoloCodice" name="circoloCodice" required>
+            <button onclick="">Unisciti</button>
+            <a href="#" onclick="visNoCircolo()">Torna indietro</a>
+        </div>
+    </section>
+
+    <section id="SiCircolo">
+        <div id="gestioneCircolo">
+            <h2>Il tuo circolo</h2>
+            <h3>Membri:</h3>
+        </div>
+    </section>
+
+    <section id="link">
+        <a href="dashboard.html">Torna indietro</a>
+    </section>
+</body>
+
+</html>

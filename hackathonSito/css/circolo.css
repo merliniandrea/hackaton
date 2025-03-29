@@ -1,0 +1,138 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+header {
+    padding: 30px;
+    background-color: #124559;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+header img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #01161E;
+    display: flex;
+}
+
+nav {
+    margin: 0;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+nav li a:hover {
+    background-color: #022533;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    border-width: 1px;
+    border-radius: 60px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    width: 90%;
+    margin: 10px;
+}
+
+button {
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    border-radius: 50px;
+    padding: 10px;
+    margin: 10px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+div {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    min-height: 40vh;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #01161E;
+}
+
+#SiCircolo ul {
+    color: #01161E;
+    background-color: transparent;
+    display: block;
+    margin-bottom: 10px; /* Distanza tra le voci della lista */
+    padding: 5px;
+}
+
+#SiCircolo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centra gli elementi orizzontalmente */
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+#link {
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 30px;
+}
+
+.logo {
+    height: auto;
+    width: 200px;
+    position: relative;
+    display: flex;
+}

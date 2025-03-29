@@ -1,0 +1,264 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh; 
+}
+
+body {
+    flex-grow: 1;
+    background-color: #EFF6E0;
+}
+
+header {
+    padding: 30px;
+    background-color: #124559;
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 50px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #598392;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #01161E;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #01161E;
+    display: flex;
+}
+
+nav {
+    margin: 0;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+}
+
+nav li a:hover {
+    background-color: #022533;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    flex: 1;
+}
+
+.sec-one {
+    min-height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.question {
+    width: 50%;
+    text-align: center;
+}
+
+.imggif{
+    border-radius: 20px;
+}
+
+.main-img {
+    width: 40%;
+    height: auto;
+}
+
+.content,
+.content1 {
+    flex-grow: 1;
+    padding: 20px;
+    margin-right: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.content {
+    background-color: #598392;
+    color: white;
+}
+
+.content1 {
+    background-color: #01161E;
+    color: white;
+}
+
+section img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.content p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: #f8f6f6;
+}
+
+.differenza,
+.global {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+footer {
+    background-color: #01161E;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 50vh;
+    margin-top: auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 20px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ffffff50;
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+/* Pulsanti accessibilità */
+#accessibilita {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#accessibilita button {
+    font-size: 16px;
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+}
+
+#accessibilita button:hover {
+    background: gray;
+}
+
+/* Modalità alto contrasto */
+.alto-contrasto button {
+    background: white !important;
+    color: black !important;
+}
+
+.alto-contrasto * {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* Menu accessibilità */
+#menuAccessibilita {
+    display: none;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    position: relative;
+    display: flex;
+}
+
+p {
+    padding-left: 20%;
+    padding-right: 20%;
+}

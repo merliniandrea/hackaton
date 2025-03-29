@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Includi Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Includi Chart.js DataLabels plugin (opzionale se utilizzi etichette sui grafici) -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <!-- Aggiungi il CSS di Bootstrap nel <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Aggiungi JavaScript di Bootstrap (alla fine del body) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+
+    </header>
+    <nav>
+
+
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="login"><a href="login.html">Accedi</a></li>
+            <li class="login"><a href="signup.html">Registrati</a></li>
+            <li class="logout" style="display:none"><a href="#" id="logoutButton">Logout</a></li>
+            <li class="dashboard"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/03/28/12/20250328120515-VFC7XSZY.js"></script>
+    <script>
+        window.onload = function () {
+            // Controlla se l'utente è loggato nel sessionStorage
+            let logged = sessionStorage.getItem('logged');
+
+            // Ottieni gli elementi dei pulsanti di login, registrazione e logout
+            let loginButton = document.querySelector('.login'); // Tutti i pulsanti di login
+            let logoutButton = document.querySelector('.logout'); // Pulsante di logout
+
+            if (logged === 'true') {
+                // Se l'utente è loggato, nascondi i pulsanti di login e registrazione
+                let loginElements = document.querySelectorAll('.login');
+                loginElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+
+                // Mostra il pulsante di logout
+                logoutButton.style.display = 'block';
+
+                // Aggiungi un evento per il logout
+                document.getElementById('logoutButton').addEventListener('click', function () {
+                    sessionStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
+                    window.location.href = 'login.html'; // Reindirizza alla pagina di login dopo il logout
+                });
+            } else {
+                // Se l'utente non è loggato, nascondi il pulsante di logout e mostra i pulsanti di login
+                logoutButton.style.display = 'none';
+
+                // Mostra i pulsanti di login e registrazione
+                loginElements.forEach(element => {
+                    element.style.display = 'inline-block';
+                });
+            }
+        };
+    </script>
+
+    <script src="js/dashboard.js"></script>
+    <section id="section-content">
+        <div class="bar">
+            <h2>Consumo Digitale del Giorno</h2>
+            <canvas id="barChart"></canvas> <!-- Grafico a barre -->
+        </div>
+        <div class="text">
+            <h1>Risultati Questionario Generale</h1>
+            <p class="testo1">Guardare film in streaming per due ore al giorno emette CO2 pari a un viaggio in auto di
+                250 km. Un'ora sui social ogni giorno per un mese produce CO2 come 20 ore di forno acceso. Inviare 100
+                email con allegati equivale a una pizza margherita, mentre 5 ore di videoconferenza settimanale emettono
+                quanto una TV accesa per un anno. Piccole modifiche come ridurre lo streaming o spegnere la webcam
+                possono fare una grande differenza.</p>
+        </div>
+    </section>
+
+    <section id="section-content">
+        <div class="pie">
+            <h2>Report Settimanale dell'Utente</h2>
+            <canvas id="weeklyPieChart"></canvas> <!-- Grafico a torta -->
+        </div>
+        <div class="text">
+            <h1>Consigli</h1>
+            <p class="testo1">Utilizzare un motore di ricerca per 30 minuti al giorno per un mese genera CO2 pari a un
+                viaggio in auto di 50 km. Caricare 100 foto su un social network emette come 10 minuti di utilizzo del
+                condizionatore. Navigare su Internet per un'ora al giorno per un mese è come bruciare 50 litri di
+                benzina. Ogni ora passata a giocare online equivale a emettere CO2 come una lavatrice accesa per due
+                ore.</p>
+        </div>
+    </section>
+
+    <section id="section-content">
+        <div class="row" style="margin: 0;">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div class="text text-center">
+                    <h1>Sezione della Famiglia</h1>
+                    <p>testo</p>
+                </div>
+            </div>
+    
+            <div class="col-md-6">
+                <div id="carouselExampleIndicators" class="carousel" style="width: 100%; height: 400px; overflow: hidden;">
+                    <div class="carousel-inner" id="carousel-content"></div>
+                    <button id="prev" class="carousel-control-prev" type="button">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button id="next" class="carousel-control-next" type="button">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        let currentIndex = 0;
+    
+        async function loadRank() {
+            const userId = 3;
+            const apiUrl = `http://185.6.242.121:7080/~inb5/merlini/api/dashboard/rank.php?id=${userId}`;
+    
+            try {
+                const response = await fetch(apiUrl);
+                const result = await response.json();
+    
+                console.log("Risposta API:", result); // Debugging
+    
+                if (!response.ok || !Array.isArray(result)) {
+                    throw new Error("Risposta non valida dall'API");
+                }
+    
+                const data = result;
+                let carouselContent = document.getElementById("carousel-content");
+                carouselContent.innerHTML = "";
+    
+                data.forEach((group, index) => {
+                    let activeClass = index === 0 ? "active" : "";
+                    carouselContent.innerHTML += `
+                        <div class="carousel-item ${activeClass}">
+                            <div class="container text-center p-4">
+                                <h2>${group.group}</h2>
+                                ${generatePodium(group.users)}
+                            </div>
+                        </div>`;
+                });
+    
+                showSlide(currentIndex);
+                setupCarouselButtons();
+    
+            } catch (error) {
+                console.error("Errore nel recupero dati:", error);
+                alert("Errore nel caricamento del ranking.");
+            }
+        }
+    
+        function generatePodium(users) {
+            users.sort((a, b) => a.points - b.points); // Ordina per punteggio crescente
+            let podiumHTML = '<div class="podium-container">';
+    
+            // Inserisci i 3 posti, se non ci sono, metti un quadrato vuoto
+            for (let i = 0; i < 3; i++) {
+                let user = users[i] || { name: '', surname: '', points: '' }; // Se manca qualcuno, metti un quadrato vuoto
+                let className = i === 0 ? 'first bg-warning text-dark' :
+                    i === 1 ? 'second bg-secondary text-white' :
+                        i === 2 ? 'third bg-danger text-white' : 'empty bg-light'; // Quadrato vuoto
+    
+                podiumHTML += `
+                    <div class="podium-item ${className}">
+                        <strong>${user.name || 'Vacante'} ${user.surname || ''}</strong><br>
+                        ${user.points || '---'} pts
+                    </div>`;
+            }
+    
+            podiumHTML += '</div>';
+            return podiumHTML;
+        }
+    
+        function showSlide(index) {
+            let slides = document.querySelectorAll(".carousel-item");
+            slides.forEach((slide, i) => {
+                slide.classList.remove("fade-in");
+                slide.style.display = "none";
+            });
+    
+            slides[index].style.display = "block";
+            setTimeout(() => {
+                slides[index].classList.add("fade-in");
+            }, 100);
+        }
+    
+        function setupCarouselButtons() {
+            const prevButton = document.getElementById("prev");
+            const nextButton = document.getElementById("next");
+    
+            prevButton.addEventListener("click", () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : document.querySelectorAll(".carousel-item").length - 1;
+                showSlide(currentIndex);
+            });
+    
+            nextButton.addEventListener("click", () => {
+                currentIndex = (currentIndex < document.querySelectorAll(".carousel-item").length - 1) ? currentIndex + 1 : 0;
+                showSlide(currentIndex);
+            });
+        }
+    
+        loadRank();
+    </script>
+    
+    <style>
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+    
+        .carousel-inner {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .carousel-item {
+            display: none;
+            width: 100%;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+    
+        .carousel-item.fade-in {
+            opacity: 1;
+        }
+    
+        .podium-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    
+        .podium-item {
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .first {
+            background-color: #f39c12;
+            color: white;
+        }
+    
+        .second {
+            background-color: #7f8c8d;
+            color: white;
+        }
+    
+        .third {
+            background-color: #e74c3c;
+            color: white;
+        }
+    
+        .empty {
+            background-color: #ccc;
+            color: #fff;
+            font-weight: normal;
+        }
+    
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black;
+            width: 40px;
+            height: 40px;
+        }
+    
+        #prev,
+        #next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+    
+        #prev {
+            left: 10px;
+        }
+    
+        #next {
+            right: 10px;
+        }
+    </style>
+ F    
+
+    <footer>
+        <a href="index.html">Hackathon</a>
+        <h3>Link utili</h3>
+        <div class="social-icons">
+            <ul>
+                <li><a href="#"><img src="img/facebook-icon.png" alt="Facebook">Facebook</a></li>
+                <li><a href="#"><img src="img/twitter-icon.png" alt="Twitter">X</a></li>
+                <li><a href="#"><img src="img/instagram-icon.png" alt="Instagram">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hackathon</p>
+        </div>
+    </footer>
+</body>
+
+</html>
