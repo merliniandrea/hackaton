@@ -14,7 +14,7 @@
     <header>
         <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
     </header>
-    
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -22,19 +22,20 @@
             <li class="login"><a href="signup.html">Registrati</a></li>
             <li class="logout" style="display:none"><a href="#" id="logoutButton">Logout</a></li>
             <li class="dashboard"><a href="dashboard.html">Dashboard</a></li>
+            <li class="dashboard"><a href="leaderscore.html">Leader Score</a></li>
         </ul>
     </nav>
 
     <script>
         window.onload = function () {
             // Controlla se l'utente è loggato nel sessionStorage
-            let logged = sessionStorage.getItem('logged');
+            let logged = localStorage.getItem('logged');
 
             // Ottieni gli elementi dei pulsanti di login, registrazione e logout
-            let loginElements = document.querySelectorAll('.login'); // Tutti i pulsanti di login
+            let loginElements = document.querySelectorAll('.login'); // Tutti i pulsanti di login e registrazione
             let logoutButton = document.querySelector('.logout'); // Pulsante di logout
 
-            if (logged === 'true') {
+            if (logged) {
                 // Se l'utente è loggato, nascondi i pulsanti di login e registrazione
                 loginElements.forEach(element => {
                     element.style.display = 'none';
@@ -45,7 +46,7 @@
 
                 // Aggiungi un evento per il logout
                 document.getElementById('logoutButton').addEventListener('click', function () {
-                    sessionStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
+                    localStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
                     window.location.href = 'login.html'; // Reindirizza alla pagina di login dopo il logout
                 });
             } else {
@@ -57,8 +58,22 @@
                     element.style.display = 'inline-block';
                 });
             }
+
+            document.getElementById("menuAccessibilita").style.display = "none"; // Assicura che parta chiuso
+
+            // Carica le impostazioni salvate
+            if (localStorage.getItem("fontSize")) {
+                fontSize = parseInt(localStorage.getItem("fontSize"));
+                document.body.style.fontSize = fontSize + "px";
+            }
+            if (localStorage.getItem("contrasto") === "on") {
+                document.body.classList.add("alto-contrasto");
+                contrastoAttivo = true;
+            }
         };
     </script>
+
+
 
     <section>
         <div>
@@ -72,7 +87,7 @@
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
+
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
 
@@ -85,4 +100,5 @@
     </section>
 
 </body>
+
 </html>

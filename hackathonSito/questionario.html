@@ -10,31 +10,32 @@
 </head>
 
 <body>
+
     <header>
         <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
     </header>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li class="login"><a href="login.html">Accedi</a></li>
             <li class="login"><a href="signup.html">Registrati</a></li>
             <li class="logout" style="display:none"><a href="#" id="logoutButton">Logout</a></li>
             <li class="dashboard"><a href="dashboard.html">Dashboard</a></li>
+            <li class="dashboard"><a href="leaderscore.html">Leader Score</a></li>
         </ul>
     </nav>
 
     <script>
         window.onload = function () {
             // Controlla se l'utente è loggato nel sessionStorage
-            let logged = sessionStorage.getItem('logged');
+            let logged = localStorage.getItem('logged');
 
             // Ottieni gli elementi dei pulsanti di login, registrazione e logout
-            let loginButton = document.querySelector('.login'); // Tutti i pulsanti di login
+            let loginElements = document.querySelectorAll('.login'); // Tutti i pulsanti di login e registrazione
             let logoutButton = document.querySelector('.logout'); // Pulsante di logout
 
-            if (logged === 'true') {
+            if (logged) {
                 // Se l'utente è loggato, nascondi i pulsanti di login e registrazione
-                let loginElements = document.querySelectorAll('.login');
                 loginElements.forEach(element => {
                     element.style.display = 'none';
                 });
@@ -44,7 +45,7 @@
 
                 // Aggiungi un evento per il logout
                 document.getElementById('logoutButton').addEventListener('click', function () {
-                    sessionStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
+                    localStorage.removeItem('logged'); // Rimuove l'elemento di sessione 'logged'
                     window.location.href = 'login.html'; // Reindirizza alla pagina di login dopo il logout
                 });
             } else {
@@ -55,6 +56,18 @@
                 loginElements.forEach(element => {
                     element.style.display = 'inline-block';
                 });
+            }
+
+            document.getElementById("menuAccessibilita").style.display = "none"; // Assicura che parta chiuso
+
+            // Carica le impostazioni salvate
+            if (localStorage.getItem("fontSize")) {
+                fontSize = parseInt(localStorage.getItem("fontSize"));
+                document.body.style.fontSize = fontSize + "px";
+            }
+            if (localStorage.getItem("contrasto") === "on") {
+                document.body.classList.add("alto-contrasto");
+                contrastoAttivo = true;
             }
         };
     </script>
@@ -74,10 +87,11 @@
 
         <!-- Sezione per commento e tasto Dashboard -->
         <div id="graficoContainer" style="display:none;">
-            <div id="commento" style="text-align: center; margin-top: 20px; font-size: 18px;"></div>
+            <div id="commento" class="commento-container"></div>
             <div style="text-align: center; margin-top: 20px;">
                 <a href="dashboard.html">
-                    <button style="padding: 10px 20px; font-size: 16px;">Vai alla Dashboard</button>
+                    <button style="padding: 10px 20px; font-size: 16px;" class="risposta-btn">Vai alla
+                        Dashboard</button>
                 </a>
             </div>
         </div>

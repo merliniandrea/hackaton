@@ -10,8 +10,8 @@ async function login(event) {
     if (response.ok) {
         let data = await response.json(); // Aggiungi "await" per aspettare la risposta
 
-        sessionStorage.setItem("logged", data.logged);
-        sessionStorage.setItem("id", 3);
+        localStorage.setItem("logged", data.logged);
+        localStorage.setItem("userId", data.id);
 
         window.location.replace("dashboard.html");
     }

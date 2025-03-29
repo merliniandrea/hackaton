@@ -34,8 +34,8 @@ console.log(userData);
         // Se la registrazione è andata a buon fine
         if (data.message === "Sigup effettuato con successo") {
             // Salva lo stato di login e l'ID dell'utente
-            sessionStorage.setItem("logged", true);
-            sessionStorage.setItem("id", data.id);  // Usa l'ID restituito dal server
+            localStorage.setItem("logged", true);
+            localStorage.setItem("userId", data.id);  // Usa l'ID restituito dal server
             console.log("Utente registrato correttamente");
 
             // Reindirizza alla pagina del questionario

@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Funzione per caricare il grafico a barre (consumo digitale del giorno)
     async function loadBarChart() {
-        //const userId = sessionStorage.getItem("id");
-        const userId = 3;
+        const userId = localStorage.getItem("userId");
 
         const apiUrl = `http://185.6.242.121:7080/~inb5/merlini/api/dashboard/bar.php?id=${userId}&date=2025-03-26`;
 
@@ -70,8 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Funzione per caricare il grafico a torta (report settimanale)
     async function loadPieChart() {
-        //const userId = sessionStorage.getItem("id");
-        const userId = 3;
+        const userId = localStorage.getItem("userId");
         const weekStart = "2025-03-18"; // Data di inizio settimana
         const apiUrl = `http://185.6.242.121:7080/~inb5/merlini/api/dashboard/pie.php?id=${userId}&week_start=${weekStart}`;
 

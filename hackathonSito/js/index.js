@@ -35,18 +35,3 @@ document.getElementById("toggleAccessibilita").addEventListener("click", functio
     let menu = document.getElementById("menuAccessibilita");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 });
-
-// Quando la pagina si carica, assicura che il menu sia nascosto
-window.onload = function() {
-    document.getElementById("menuAccessibilita").style.display = "none"; // Assicura che parta chiuso
-
-    // Carica le impostazioni salvate
-    if (localStorage.getItem("fontSize")) {
-        fontSize = parseInt(localStorage.getItem("fontSize"));
-        document.body.style.fontSize = fontSize + "px";
-    }
-    if (localStorage.getItem("contrasto") === "on") {
-        document.body.classList.add("alto-contrasto");
-        contrastoAttivo = true;
-    }
-};

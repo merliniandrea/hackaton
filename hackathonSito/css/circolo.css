@@ -4,7 +4,8 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    background-color: #EFF6E0;
+    margin-bottom: 200px;
 }
 
 header {
@@ -91,7 +92,7 @@ section {
 
 div {
     border-radius: 10px;
-    background-color: #f2f2f2;
+    background-color: #AEC3B0;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
     width: 30%;

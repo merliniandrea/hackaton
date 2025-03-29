@@ -57,7 +57,7 @@ let groups = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     async function getGroups() {
-        const userId = 3;
+        const userId = localStorage.getItem("userId");
         const apiUrl = `http://185.6.242.121:7080/~inb5/merlini/api/group/get.php?id=${userId}`;
 
         try {

@@ -114,9 +114,13 @@ function salvaRisposta(indexRisposta) {
             // Nascondi il questionario e mostra il tasto "Vedi Risultato"
             document.querySelector('.questionario').style.display = 'none';
             document.getElementById('fineButton').style.display = 'block'; // Mostra il pulsante "Vedi Risultato"
+
+            // Mostra il commento senza inviare i dati (se necessario)
+            mostraCommento();
         }
     }
 }
+
 
 // Fattori di emissione
 const emissionePerKWh = 0.4;  // kg di CO2 per kWh
@@ -236,7 +240,6 @@ function mostraGraficoGrande() {
     });
 }
 
-// Funzione per mostrare il commento relativo all'inquinamento
 function mostraCommento() {
     // Nascondi il tasto "Vedi Risultato"
     document.getElementById('fineButton').style.display = 'none';
@@ -244,12 +247,55 @@ function mostraCommento() {
     // Mostra il grafico grande e il commento
     document.getElementById('graficoContainer').style.display = 'block';
 
-    // Calcola il commento in base ai punteggi ottenuti
-    let inquinamento = calcolaInquinamento();
-    let commento = `Il tuo impatto ambientale totale è:\n${inquinamento}`;
+    // Calcoliamo le ore totali per ogni categoria
+    let totaleOre = {
+        "Social": 0,
+        "Streaming": 0,
+        "Gaming": 0,
+        "E-commerce": 0
+    };
 
-    document.getElementById('commento').textContent = commento;
+    // Sommiamo le ore per ogni gruppo
+    Object.keys(risposteScelte).forEach(cat => {
+        let categoria = Object.keys(totaleOre)[cat - 1];
+        if (totaleOre[categoria] !== undefined) {
+            Object.values(risposteScelte[cat]).forEach(punteggio => {
+                totaleOre[categoria] += punteggio / 5; // 5 ore per ogni punteggio
+            });
+        }
+    });
+
+    // Calcoliamo il totale delle ore per tutte le categorie
+    let totaleOreGlobali = 0;
+    Object.keys(totaleOre).forEach(categoria => {
+        totaleOreGlobali += totaleOre[categoria];
+    });
+
+    // Calcoliamo il consumo totale in kWh
+    const kWhTotale = totaleOreGlobali * consumoPerOra;
+
+    // Calcoliamo la CO2 prodotta
+    const co2Totale = kWhTotale * emissionePerKWh;
+
+    // Calcoliamo i litri di benzina equivalenti
+    const litriBenzinaTotali = co2Totale / emissionePerLitroBenzina;
+
+    // Calcoliamo il numero di alberi abbattuti (22 kg CO2 per albero)
+    const alberiAbbattuti = co2Totale / 22;
+
+    // Generiamo il commento
+    let consumiCumulativi = `<h2>Impatto Ambientale Totale</h2>`;
+    consumiCumulativi += `<p>Il tuo consumo complessivo di energia è stato valutato, ed ecco i risultati:</p>`;
+    consumiCumulativi += `<p><span class="emphasis">${litriBenzinaTotali.toFixed(2)} litri</span> di benzina sono stati consumati.</p>`;
+    consumiCumulativi += `<p>Questo è equivalente a circa <span class="emphasis">${alberiAbbattuti.toFixed(2)} alberi</span> abbattuti per la CO2 emessa.</p>`;
+    consumiCumulativi += `<p>Ogni piccolo cambiamento che puoi fare può avere un grande impatto sul nostro pianeta. Considera di ridurre i tuoi consumi digitali per aiutare l'ambiente!</p>`;
+
+    // Mostriamo i risultati
+    document.getElementById('commento').innerHTML = consumiCumulativi;
 }
+
+
+
 
 
 

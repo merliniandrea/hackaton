@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="js/leaderscore.js" defer></script>
+
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .medal-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><img src="img/logo.png" alt="Logo" class="logo"></a>
+    </header>
+
+    <nav>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="login"><a href="login.html">Accedi</a></li>
+            <li class="login"><a href="signup.html">Registrati</a></li>
+            <li class="logout" style="display:none"><a href="#" id="logoutButton">Logout</a></li>
+            <li class="dashboard"><a href="dashboard.html">Dashboard</a></li>
+            <li class="dashboard"><a href="leaderscore.html">Leader Score</a></li>
+        </ul>
+    </nav>
+
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Ore online</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Le righe della tabella saranno aggiunte dinamicamente -->
+        </tbody>
+    </table>
+
+    <footer>
+        <a href="index.html">Hackathon</a>
+        <h3>Link utili</h3>
+        <div class="social-icons">
+            <ul>
+                <li><a href="#"><img src="img/facebook-icon.png" alt="Facebook">Facebook</a></li>
+                <li><a href="#"><img src="img/twitter-icon.png" alt="Twitter">X</a></li>
+                <li><a href="#"><img src="img/instagram-icon.png" alt="Instagram">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hackathon</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

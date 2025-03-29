@@ -62,12 +62,10 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 
-// Hash della password
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Inserisci l'utente nel database
 $stmt = $conn->prepare("INSERT INTO h_users (nome, cognome, email, password) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $nome, $cognome, $email, $hashed_password);
+$stmt->bind_param("ssss", $nome, $cognome, $email, $password);
 
 if ($stmt->execute()) {
     $stmt = $conn->prepare("SELECT id FROM h_users WHERE email = ?");

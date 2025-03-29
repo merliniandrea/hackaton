@@ -1,32 +1,36 @@
-html, body{
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    
-    
+
+
 }
+
 header {
     padding: 30px;
     background-color: #124559;
-    display: flex; 
+    display: flex;
     align-items: center;
     margin: 0;
-    
+
 }
+
 header img {
-    width: 80px; 
+    width: 80px;
     height: auto;
-    margin-right: 15px; 
-    
+    margin-right: 15px;
+
 }
-header a{
+
+header a {
     color: white;
     text-decoration: none;
     font-size: 50px;
     font-family: 'Poppins', sans-serif;
-    
+
 }
 
 ul {
@@ -40,8 +44,8 @@ ul {
 
 nav {
     margin: 0;
-    
-    
+
+
 }
 
 nav li a {
@@ -52,15 +56,15 @@ nav li a {
     text-decoration: none;
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
-   
-    
-    
+
+
+
 }
 
 nav ul li {
     display: flex;
     align-items: center;
-    
+
 }
 
 nav li a:hover {
@@ -69,17 +73,17 @@ nav li a:hover {
 
 .section-link {
     position: absolute;
-    top: 10px; 
-    right: 10px; 
+    top: 10px;
+    right: 10px;
     font-size: 14px;
     color: grey;
     text-decoration: none;
-    
-  }
-  
+
+}
+
 .section-link:hover {
     text-decoration: underline;
-    
+
 }
 
 section {
@@ -101,73 +105,86 @@ section {
     padding: 20px;
     flex-direction: column;
 
-} 
+}
 
-.bar{
+.bar {
     width: 50%;
     align-items: center;
     margin-left: 10%;
-    
+
 }
-.pie{
+
+.pie {
     width: 25%;
     align-items: center;
     margin-left: 10%;
 }
+
 .image {
     width: 50%;
     height: 40vh;
 }
+
 .image img {
-    width: 100%; 
+    width: 100%;
     height: auto;
     border-radius: 8px;
 }
-.text{
-    width: 50%; /* Usa tutta la larghezza disponibile */
+
+.text {
+    width: 50%;
+    /* Usa tutta la larghezza disponibile */
     text-align: center;
 }
 
 .additional-content {
-    display: flex; /* Allinea orizzontalmente le div */
-    gap: 20px; /* Distanza tra i box */
-    margin-top:auto; /* Distanza dal testo */
-    justify-content: center; /* Centra i box */
-  }
-  
+    display: flex;
+    /* Allinea orizzontalmente le div */
+    gap: 20px;
+    /* Distanza tra i box */
+    margin-top: auto;
+    /* Distanza dal testo */
+    justify-content: center;
+    /* Centra i box */
+}
+
 .box {
     background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    width: 30%; /* Impostiamo la larghezza per ogni box */
+    width: 30%;
+    /* Impostiamo la larghezza per ogni box */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+}
+
 .box:hover {
     background-color: #e0e0e0;
-  }
-  
+}
+
 footer {
-    background-color: #01161E;;;
+    background-color: #01161E;
+    ;
+    ;
     color: white;
     padding: 30px 0;
     text-align: center;
     font-family: 'Poppins', sans-serif;
     width: 100%;
-    height:30vh;
+    height: 30vh;
     margin-top: auto;
 }
+
 .social-icons {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 
 .social-icons img {
     width: 20px;
-    height:max-content;
+    height: max-content;
     transition: transform 0.3s;
-   
+
 }
 
 .social-icons img:hover {
@@ -181,7 +198,8 @@ footer {
     font-size: 14px;
     background-color: #01161E;
 }
-footer a{
+
+footer a {
     display: block;
     color: white;
     text-align: center;
@@ -189,21 +207,51 @@ footer a{
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     margin: 10px;
-    
+
 }
 
-.logo{
+.logo {
     height: auto;
     width: 200px;
     position: relative;
     display: flex;
 }
 
-
-
-.testo1{
+.testo1 {
     padding-right: 15%;
     padding-left: 15%;
+}
+
+.button-squadre {
+    background-color: #124559;
+    /* Colore di sfondo blu */
+    border-radius: 50px;
+    /* Bordo arrotondato */
+    padding: 15px 30px;
+    /* Maggiore padding per farlo più grande */
+    font-size: 18px;
+    /* Scritta più grande */
+    font-weight: bold;
+    /* Scritta in grassetto */
+    color: white;
+    /* Colore del testo bianco */
+    text-transform: uppercase;
+    /* Testo in maiuscolo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Leggera ombra */
+    transition: all 0.3s ease;
+    /* Animazione morbida per il cambiamento di stato */
+    margin-right: 100px;
+}
+
+/* Effetto hover */
+.button-squadre:hover {
+    background-color: #082734;
+    /* Cambia il colore di sfondo quando il bottone è sopra */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    /* Ombra più grande */
+    transform: translateY(-3px);
+    /* Leggera spinta verso l'alto */
 }

@@ -1,12 +1,14 @@
 /* Impostazioni generali per l'intera pagina */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f5f5; /* Colore di sfondo chiaro per contrastare con gli altri elementi */
+    background-color: #f5f5f5;
+    /* Colore di sfondo chiaro per contrastare con gli altri elementi */
 }
 
 header {
@@ -66,29 +68,41 @@ header a {
 /* Stile per i pulsanti delle risposte */
 button.risposta-btn {
     font-family: 'Poppins', sans-serif;
-    background-color: #598392; /* Grigio scuro */
+    background-color: #598392;
+    /* Grigio scuro */
     color: white;
-    border-radius: 25px; /* Bordi più arrotondati */
+    border-radius: 25px;
+    /* Bordi più arrotondati */
     border: none;
     cursor: pointer;
-    padding: 12px 25px; /* Aumento leggero del padding per un aspetto più generoso */
-    margin: 12px 0; /* Aggiunta di margine verticale tra i pulsanti */
-    width: 250px; /* Aumentata la larghezza per un aspetto più equilibrato */
-    transition: all 0.3s ease; /* Transizione per effetto hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Ombra più morbida per un effetto più delicato */
-    font-size: 18px; /* Font di dimensioni più grandi per una maggiore leggibilità */
+    padding: 12px 25px;
+    /* Aumento leggero del padding per un aspetto più generoso */
+    margin: 12px 0;
+    /* Aggiunta di margine verticale tra i pulsanti */
+    width: 250px;
+    /* Aumentata la larghezza per un aspetto più equilibrato */
+    transition: all 0.3s ease;
+    /* Transizione per effetto hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Ombra più morbida per un effetto più delicato */
+    font-size: 18px;
+    /* Font di dimensioni più grandi per una maggiore leggibilità */
     text-align: center;
     display: inline-block;
 }
 
 button.risposta-btn:hover {
-    background-color: #01161E; /* Colore scuro al passaggio del mouse */
-    transform: translateY(-4px); /* Effetto di spinta verso l'alto più morbido */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombra più forte al passaggio del mouse */
+    background-color: #01161E;
+    /* Colore scuro al passaggio del mouse */
+    transform: translateY(-4px);
+    /* Effetto di spinta verso l'alto più morbido */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* Ombra più forte al passaggio del mouse */
 }
 
 button.risposta-btn:active {
-    transform: translateY(2px); /* Effetto di "pressione" quando il bottone è premuto */
+    transform: translateY(2px);
+    /* Effetto di "pressione" quando il bottone è premuto */
 }
 
 /* Stile per la visualizzazione del risultato */
@@ -180,6 +194,7 @@ nav li a:hover {
 
 /* Adattamento per dispositivi mobili */
 @media (max-width: 768px) {
+
     /* Modifiche per il contenitore delle domande */
     #domandaContainer {
         font-size: 20px;
@@ -234,4 +249,56 @@ nav li a:hover {
     width: 200px;
     position: relative;
     display: flex;
+}
+
+.risposta-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.risposta-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.risposta-btn:active {
+    background-color: #388e3c;
+}
+
+.commento-container {
+    background-color: #f0f8ff;
+    color: #333;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.commento-container h2 {
+    font-size: 24px;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.commento-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.commento-container .emphasis {
+    color: #ff6347;
+    font-weight: bold;
 }

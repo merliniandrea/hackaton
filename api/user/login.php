@@ -40,10 +40,9 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
-    $hashed_password = $user["password"];
 
     // Verifica la password con password_verify()
-    if ($password && password_verify($password, $hashed_password)) {
+    if ($password && $password === $user['password']) {
         response(["message" => "Utente trovato", "logged" => "true", "id" => $user["id"]]);
     } else {
         response(["message" => "Password errata", "logged" => "false"]);
